@@ -55,14 +55,14 @@ app.controller('PersonListController', function($scope, $modal, ContactService){
 		console.log("more Please");
 		$scope.contacts.loadMore();
 	};
-
+	var modal = $modal({
+		scope: $scope,
+		templateUrl: 'templates/modal.create.tpl.html',
+		show: true
+	});
 	$scope.showCreateModal = function(){
 		$scope.contacts.selectedPerson = {};
-		$scope.createModal = $modal({
-			scope: $scope,
-			templateUrl: 'templates/modal.create.tpl.html',
-			show: true
-		});
+		modal.$promise.then(modal.show);
 	};
 
 	$scope.createContact = function(){
