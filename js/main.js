@@ -6,7 +6,8 @@ var app = angular.module('codecraft', [
 	'angularSpinner',
 	'jcs-autoValidate',
 	'angular-ladda',
-	'mgcrea.ngStrap'
+	'mgcrea.ngStrap',
+	'ui.bootstrap'
 ]);
 
 app.config(function($httpProvider, $resourceProvider, laddaProvider, $datepickerProvider){
@@ -42,7 +43,7 @@ app.controller('PersonDetailController', function($scope, ContactService){
 	}
 });
 
-app.controller('PersonListController', function($scope, $modal, ContactService){
+app.controller('PersonListController', function($scope, $uibModal, ContactService){
 
 	$scope.search = "";
 	$scope.order = "email";
@@ -56,14 +57,34 @@ app.controller('PersonListController', function($scope, $modal, ContactService){
 		$scope.contacts.loadMore();
 	};
 
-	$scope.showCreateModal = function(){
+
+
+	$scope.showBootstrapModal = function (size, parentSelector) {
+		var parentElem = parentSelector ?
+			angular.element($document[0].querySelector('.modal-demo ' + parentSelector)) : undefined;
+		var modalInstance = $uibModal.open({
+			animation: $ctrl.animationsEnabled,
+			ariaLabelledBy: 'modal-title',
+			ariaDescribedBy: 'modal-body',
+			templateUrl: 'myModalContent.html',
+			controller: 'ModalInstanceCtrl',
+			controllerAs: '$ctrl',
+			size: size,
+			appendTo: parentElem,
+			resolve: {
+				items: function () {
+					return $ctrl.items;
+				}
+			}
+		});
+	/*$scope.showCreateModal = function(){
 		$scope.contacts.selectedPerson = {};
 		$scope.createModal = $modal({
 			scope: $scope,
 			templateUrl: 'templates/modal.create.tpl.html',
 			show: true
 		});
-	};
+	};*/
 
 	$scope.createContact = function(){
 		console.log('Show Modal');
