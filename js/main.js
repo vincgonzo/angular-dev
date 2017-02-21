@@ -6,7 +6,9 @@ var app = angular.module('codecraft', [
 	'angularSpinner',
 	'jcs-autoValidate',
 	'angular-ladda',
-	'mgcrea.ngStrap'
+	'mgcrea.ngStrap',
+	'toaster',
+	'ngAnimate'
 ]);
 
 app.config(function($httpProvider, $resourceProvider, laddaProvider, $datepickerProvider){
