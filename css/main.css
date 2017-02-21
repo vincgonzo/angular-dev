@@ -1,0 +1,26 @@
+body {
+  padding-top: 50px;
+}
+.main-content {
+  padding: 40px 15px;
+}
+.spinner {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+.spinner > p {
+  margin-top: 20px;
+}
+.panel-heading {
+  height: 65px;
+}
+.table td {
+  vertical-align: middle;
+}
+.table td .profile-photo {
+  width: 30px;
+  height: 30px;
+}
