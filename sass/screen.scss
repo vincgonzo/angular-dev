@@ -6,8 +6,20 @@
 @import "compass/reset";
 @import "themes/variables";
 
-* {
+*:not(.glyphicon):not(.fa) {
   font-family: $opensans $imp;
+}
+table {
+  th {
+    &.col-1 {
+      width: 10%;
+    }
+    &.col-2,
+    &.col-3,
+    &.col-4 {
+      width: 30%;
+    }
+  }
 }
 
 .modal-backdrop.am-fade {
@@ -24,5 +36,27 @@
     &.ng-leave-active {
       opacity: 0;
     }
+  }
+}
+.sortables {
+  display: inline-block;
+  position: relative;
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  span:first-child {
+    position: absolute;
+    top: 0;
+  }
+  span:last-child {
+    position: absolute;
+    bottom: 0;
+  }
+  span {
+    color: lightgray;
+    font-size: 18px;
+  }
+  span:hover {
+    color: #002a80;
   }
 }
