@@ -67,24 +67,29 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   display: block;
 }
 
-/* line 8, ../sass/screen.scss */
+/* line 9, ../sass/screen.scss */
+* {
+  font-family: "Open Sans", sans-serif !important;
+}
+
+/* line 13, ../sass/screen.scss */
 .modal-backdrop.am-fade {
   opacity: .5;
   transition: opacity .15s linear;
 }
-/* line 11, ../sass/screen.scss */
+/* line 16, ../sass/screen.scss */
 .modal-backdrop.am-fade.ng-enter {
   opacity: 0;
 }
-/* line 13, ../sass/screen.scss */
+/* line 18, ../sass/screen.scss */
 .modal-backdrop.am-fade.ng-enter.ng-enter-active {
   opacity: .5;
 }
-/* line 17, ../sass/screen.scss */
+/* line 22, ../sass/screen.scss */
 .modal-backdrop.am-fade.ng-leave {
   opacity: .5;
 }
-/* line 19, ../sass/screen.scss */
+/* line 24, ../sass/screen.scss */
 .modal-backdrop.am-fade.ng-leave.ng-leave-active {
   opacity: 0;
 }

@@ -4,6 +4,11 @@
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 
 @import "compass/reset";
+@import "themes/variables";
+
+* {
+  font-family: $opensans $imp;
+}
 
 .modal-backdrop.am-fade {
   opacity: .5;
