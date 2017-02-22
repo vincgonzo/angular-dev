@@ -7,7 +7,7 @@ var app = angular.module('codecraft', [
 	'jcs-autoValidate',
 	'angular-ladda',
 	'mgcrea.ngStrap',
-	'toaster',
+	'toastr',
 	'ngAnimate'
 ]);
 
@@ -87,7 +87,7 @@ app.controller('PersonListController', function($scope, $modal, ContactService){
 	});
 });
 
-app.service('ContactService', function(Contact, $q){
+app.service('ContactService', function(Contact, $q, toastr){
 	var self = {
 		'addPerson': function(person){
 			this.persons.push(person);
@@ -149,6 +149,7 @@ app.service('ContactService', function(Contact, $q){
 			self.isSaving = true;
 			person.$update().then(function(){
 				self.isSaving = false;
+				toastr.success('Updated '+ person.name);
 			});
 		},
 		'removeContact': function(person){
@@ -158,6 +159,7 @@ app.service('ContactService', function(Contact, $q){
 				var index = self.persons.indexOf(person);
 				self.persons.splice(index);
 				self.selectedPerson = null;
+				toastr.success('Removed '+ person.name);
 			});
 		},
 		'createContact': function(person){
@@ -170,6 +172,7 @@ app.service('ContactService', function(Contact, $q){
 				self.page = 1;
 				self.persons = [];
 				self.loadContacts();
+				toastr.success('Created '+ person.name);
 				d.resolve();
 			});
 			return d.promise;
