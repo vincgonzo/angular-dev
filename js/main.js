@@ -12,6 +12,22 @@ var app = angular.module('codecraft', [
 	'ui.router'
 ]);
 
+app.config(function($stateProvider, $urlRouterProvider){
+	$stateProvider
+	.state('list', {
+		url: '/',
+		templateUrl: 'templates/list.html',
+		controller: 'PersonListController'
+	})
+	.state('edit', {
+		url: '/edit/:email',
+		templateUrl: 'templates/edit.html',
+		controller: 'PersonDetailController'
+	});
+
+	$urlRouterProvider.otherwise('/');
+});
+
 app.config(function($httpProvider, $resourceProvider, laddaProvider, $datepickerProvider){
 	// API Auth key within http service
 	$httpProvider.defaults.headers.common['Authorization'] = 'Token f40a7407101e42b4f9c03b004b2881b62eb5a37f';
