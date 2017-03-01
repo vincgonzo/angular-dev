@@ -33,6 +33,20 @@ app.factory("Contact", function($resource){
 	});
 });
 
+app.filter('defaultImage', function(){
+	/**
+	* The function takes the default values given by obj persons and create that as a input
+	* the param is what you add on your filter by written :''
+	*/
+	return function(input, param){
+		if(!input){
+			return param;
+		}
+		return input;
+	}
+});
+
+
 app.controller('PersonDetailController', function($scope, ContactService){
 	$scope.contacts = ContactService;
 

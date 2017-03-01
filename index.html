@@ -72,7 +72,8 @@
 									'background-color': person.email == contacts.selectedPerson.email ? 'lightgray' : ''
 								}"
 								ng-click="contacts.selectedPerson = person">
-								<td><img ng-src="{{person.photo}}" class="img-circle profile-photo" alt=""></td>
+								<!-- the filter with parameters -->
+								<td><img ng-src="{{person.photo | defaultImage:'./images/avatar.jpg' }}" class="img-circle profile-photo" alt=""></td>
 								<td>{{ person.name	}}</td>
 								<td>{{ person.email	}}</td>
 								<td>{{ person.phonenumber }}</td>
