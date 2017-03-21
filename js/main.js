@@ -65,9 +65,9 @@ app.filter('defaultImage', function(){
 
 
 app.controller('PersonDetailController', function($scope, $stateParams, ContactService){
-	console.log($stateParams);
 
 	$scope.contacts = ContactService;
+	$scope.contacts.selectedPerson = $scope.contacts.getPerson($stateParams.email);
 
 	$scope.save = function(){
 		$scope.contacts.updateContact($scope.contacts.selectedPerson);
@@ -122,8 +122,14 @@ app.controller('PersonListController', function($scope, $modal, ContactService){
 
 app.service('ContactService', function(Contact, $q, toastr){
 	var self = {
-		'addPerson': function(person){
-			this.persons.push(person);
+		'getPerson': function(email){
+			console.log(email);
+			for (var i=0; i < self.persons.length; i++){
+				var obj = self.persons[i];
+				if(obj.email == email){
+					return obj;
+				}
+			}
 		},
 		'page': 1,
 		'hasMore': true,
