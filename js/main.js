@@ -64,16 +64,20 @@ app.filter('defaultImage', function(){
 });
 
 
-app.controller('PersonDetailController', function($scope, $stateParams, ContactService){
+app.controller('PersonDetailController', function($scope, $stateParams, $state, ContactService){
 
 	$scope.contacts = ContactService;
 	$scope.contacts.selectedPerson = $scope.contacts.getPerson($stateParams.email);
 
 	$scope.save = function(){
-		$scope.contacts.updateContact($scope.contacts.selectedPerson);
+		$scope.contacts.updateContact($scope.contacts.selectedPerson).then(function(){
+			$state.go("list");
+		});
 	}
 	$scope.remove = function(){
-		$scope.contacts.removeContact($scope.contacts.selectedPerson)
+		$scope.contacts.removeContact($scope.contacts.selectedPerson).then(function(){
+			$state.go("list");
+		});
 	}
 });
 
@@ -184,14 +188,18 @@ app.service('ContactService', function(Contact, $q, toastr){
 			}
 		},
 		'updateContact': function(person){
+			var d = $q.defer();
 			console.log("Service Called Updated");
 			self.isSaving = true;
 			person.$update().then(function(){
 				self.isSaving = false;
 				toastr.success('Updated '+ person.name);
+				d.resolve();
 			});
+			return d.promise;
 		},
 		'removeContact': function(person){
+			var d = $q.defer();
 			self.isDeleting = true;
 			person.$remove().then(function(){
 				self.isDeleting = false;
@@ -199,7 +207,9 @@ app.service('ContactService', function(Contact, $q, toastr){
 				self.persons.splice(index);
 				self.selectedPerson = null;
 				toastr.success('Removed '+ person.name);
+				d.resolve();
 			});
+			return d.promise;
 		},
 		'createContact': function(person){
 			var d = $q.defer();
