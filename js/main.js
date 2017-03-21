@@ -64,7 +64,9 @@ app.filter('defaultImage', function(){
 });
 
 
-app.controller('PersonDetailController', function($scope, ContactService){
+app.controller('PersonDetailController', function($scope, $stateParams, ContactService){
+	console.log($stateParams);
+
 	$scope.contacts = ContactService;
 
 	$scope.save = function(){
