@@ -71,10 +71,25 @@ app.factory("Contact", function($resource){
 	});
 });
 
-app.directive('ccSpinner', function($scope){
+app.directive('ccSpinner', function(){
 	return {
+		'transclude': true,
 		'restrict': 'AEC', // allow three type Attribut, Element, Class
-		'templateUrl': 'templates/spinner.html'
+		'templateUrl': 'templates/spinner.html',
+		'scope': {
+			'isLoading': '=',
+			'message': '@'
+		}
+	}
+});
+
+app.directive('ccCard', function(){
+	return {
+		'restrict': 'AE', // allow three type Attribut, Element
+		'templateUrl': 'templates/card.html',
+		'scope': {
+			'user': '='
+		}
 	}
 });
 

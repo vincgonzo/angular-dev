@@ -1,5 +1,8 @@
 <div class="col-md-12 col-lg-12">
-    <table class="table table-bordered" infinite-scroll="loadMore()" infinite-scroll-distance="1">
+  <div class="row" infinite-scroll="loadMore()" infinite-scroll-distance="1">
+    <cc-card ng-repeat="person in contacts.persons" user="person"></cc-card>
+  </div>
+    <!--table class="table table-bordered" infinite-scroll="loadMore()" infinite-scroll-distance="1">
         <tr>
             <th class="col-1">#</th>
             <th class="col-2">
@@ -21,7 +24,7 @@
         <tr ng-repeat="person in filteredPersons = contacts.persons" ng-style="{
             'background-color': person.email == contacts.selectedPerson.email ? 'lightgray' : ''
           }" ui-sref="edit({email: person.email})">
-            <!-- the filter with parameters -->
+
             <td><img ng-src="{{person.photo | defaultImage:'./images/avatar.jpg' }}" class="img-circle profile-photo" alt=""></td>
             <td>
               {{ person.name }}
@@ -29,7 +32,7 @@
             <td>{{ person.email }}</td>
             <td>{{ person.phonenumber }}</td>
             </tr>
-    </table>
+    </table-->
     <div ng-show="contacts.persons.length == 00 && !contacts.isLoading">
         <div class="alert alert-info">
             <p class="text-center">
@@ -37,9 +40,5 @@
             </p>
         </div>
     </div>
-    <cc-spinner></cc-spinner>
-    <div cc-spinner>  </div>
-    <div class="cc-spinner"></div>
-
-    <ng-include src="templates/spinner.html">  </ng-include>
+    <cc-spinner is-loading="contacts.isLoading" message="Mooing ..."></cc-spinner>
 </div>
