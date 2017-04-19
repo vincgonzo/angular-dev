@@ -71,6 +71,13 @@ app.factory("Contact", function($resource){
 	});
 });
 
+app.directive('ccSpinner', function($scope){
+	return {
+		'restrict': 'AEC', // allow three type Attribut, Element, Class
+		'templateUrl': 'templates/spinner.html'
+	}
+});
+
 app.filter('defaultImage', function(){
 	/**
 	* The function takes the default values given by obj persons and create that as a input
