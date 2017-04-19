@@ -1,0 +1,15 @@
+<form action="" class="navbar-form navbar-left">
+    <span class="fa fa-search"></span>
+    <div class="form-group">
+        <input type="text" class="form-control" id="name" ng-model="contacts.search" ng-model-options="{debounce: 300}" placeholder="Search something ...">
+    </div>
+    <span class="fa fa-sort"></span>
+    <div class="form-group">
+        <select name="" id="" class="form-group" ng-model="contacts.ordering">
+      <option value="name">Name (ASC)</option>
+      <option value="-name">Name (DESC)</option>
+      <option value="email">Email (ASC)</option>
+      <option value="-email">Email (DESC)</option>
+    </select>
+    </div>
+</form>

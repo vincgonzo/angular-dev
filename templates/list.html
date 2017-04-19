@@ -1,21 +1,4 @@
 <div class="col-md-12 col-lg-12">
-    <form action="" class="form-inline well well-sm">
-        <span class="fa fa-search"></span>
-        <div class="form-group">
-            <input type="text" class="form-control" id="name" ng-model="contacts.search" placeholder="Search something ...">
-        </div>
-        <span class="fa fa-sort"></span>
-        <div class="form-group">
-            <select name="" id="" class="form-group" ng-model="contacts.ordering">
-          <option value="name">Name (ASC)</option>
-          <option value="-name">Name (DESC)</option>
-          <option value="email">Email (ASC)</option>
-          <option value="-email">Email (DESC)</option>
-        </select>
-        </div>
-
-        <button class="btn btn-primary pull-right" data-animation="am-fade-and-scale" data-placement="center" bs-modal="modal" ng-click="showCreateModal()">Create</button>
-    </form>
     <table class="table table-bordered" infinite-scroll="loadMore()" infinite-scroll-distance="1">
         <tr>
             <th class="col-1">#</th>
