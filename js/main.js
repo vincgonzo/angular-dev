@@ -89,7 +89,16 @@ app.directive('ccCard', function(){
 		'templateUrl': 'templates/card.html',
 		'scope': {
 			'user': '=',
-			'deleteUser': '&'
+		},
+		'controller': function($scope, ContactService){
+			$scope.isDeleting = false;
+			$scope.deleteUser = function(){
+				$scope.isDeleting = true;
+				ContactService.removeContact($scope.user).then(function(){
+					//
+					$scope.isDeleting = false;
+				});
+			};
 		}
 	}
 });
@@ -149,23 +158,7 @@ app.controller('PersonListController', function($scope, $modal, ContactService){
 
 	// Loading of contents
 	$scope.loadMore = function(){
-
-		// Search for this ????
-		console.log("more Please");
 		$scope.contacts.loadMore();
-	};
-
-	$scope.parentDeleteUser = function(user){
-			$scope.contacts.removeContact(user);
-	};
-
-	$scope.showCreateModal = function(){
-		$scope.contacts.selectedPerson = {};
-		$scope.createModal = $modal({
-			scope: $scope,
-			templateUrl: 'templates/modal.create.tpl.html',
-			show: true
-		});
 	};
 
 });
