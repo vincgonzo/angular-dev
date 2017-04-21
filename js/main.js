@@ -88,7 +88,8 @@ app.directive('ccCard', function(){
 		'restrict': 'AE', // allow three type Attribut, Element
 		'templateUrl': 'templates/card.html',
 		'scope': {
-			'user': '='
+			'user': '=',
+			'deleteUser': '&'
 		}
 	}
 });
@@ -152,6 +153,10 @@ app.controller('PersonListController', function($scope, $modal, ContactService){
 		// Search for this ????
 		console.log("more Please");
 		$scope.contacts.loadMore();
+	};
+
+	$scope.parentDeleteUser = function(user){
+			$scope.contacts.removeContact(user);
 	};
 
 	$scope.showCreateModal = function(){
